@@ -14,6 +14,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderItems {
-    private Order order;
-    private int orderId;
+    private int OrderItemsId;
+    private int goodsId;
+    private String goodsName;
+    private String goodsType;
+    private int goodsNum;
+    private String goodsAddress;
+    private String goodsTime;
 }

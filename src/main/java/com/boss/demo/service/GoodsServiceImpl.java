@@ -13,43 +13,41 @@ import java.util.List;
  * @version 1.0
  * @date 2020/7/12 11:38
  */
-public class GoodsServiceImpl implements GoodsService{
+public class GoodsServiceImpl{
     @Autowired
     private HttpSession session;
 
-    private HashMap<Integer, Goods> goods;
-    private GoodsMapper goodsMapper;
+    private HashMap<Integer, Goods> goodsMap;
+//    private GoodsMapper goodsMapper;
+//
+//    public void setGoodsMapper(GoodsMapper goodsMapper) {
+//        this.goodsMapper = goodsMapper;
+//    }
 
-    public void setGoodsMapper(GoodsMapper goodsMapper) {
+    public Boolean addGoods(Goods goods) {
         getGoodsMap();
-        this.goodsMapper = goodsMapper;
+        goodsMap.put(goods.getGoodsId(),goods);
+        return true;
     }
 
-    @Override
-    public int addGoods(Goods goods) {
+    public Boolean deleteGoodsByID(int id) {
         getGoodsMap();
-        return goodsMapper.addGoods(goods);
+        goodsMap.remove(id);
+        return true;
     }
 
-    @Override
-    public int deleteGoodsByID(int id) {
+    public String queryAllGoods() {
         getGoodsMap();
-        return goodsMapper.deleteGoodsByID(id);
-    }
-
-    @Override
-    public List<Goods> queryAllGoods() {
-        getGoodsMap();
-        return goodsMapper.queryAllGoods();
+        return goodsMap.entrySet().toArray().toString();
     }
 
     public HashMap<Integer, Goods> getGoodsMap() {
-        goods = (HashMap) session.getAttribute("goodsMap");
-        if (goods == null) {
-            goods = new HashMap<Integer, Goods>();
-            session.setAttribute("goodsMap", goods);
+        goodsMap= (HashMap) session.getAttribute("goodsMap");
+        if (goodsMap == null) {
+            goodsMap = new HashMap<Integer, Goods>();
+            session.setAttribute("goodsMap", goodsMap);
         }
-        return goods;
+        return goodsMap;
     }
 
 
