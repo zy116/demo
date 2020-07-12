@@ -11,10 +11,10 @@ import java.util.List;
 @Repository
 public interface GoodsMapper {
     //增加一个商品
-    Boolean addGoods(Goods goods);
+    int addGoods(Goods goods);
 
     //根据id删除一个商品
-    Boolean deleteGoodsByID(int id);
+    int deleteGoodsByID(int id);
 
     //查询所有的商品
     List<Goods> queryAllGoods();
