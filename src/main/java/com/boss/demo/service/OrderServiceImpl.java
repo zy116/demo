@@ -7,10 +7,8 @@ import com.boss.demo.entity.Order;
 import com.boss.demo.entity.OrderItems;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author 12964
@@ -25,7 +23,7 @@ public class OrderServiceImpl {
     private GoodsServiceImpl goodsService;
 
     public void addInfo(OrderItems orderItems){
-        orderMapper.addInfo(orderItems);
+        orderMapper.addGoods(orderItems);
     }
 
     public void addGoods(int Id) {
@@ -35,6 +33,11 @@ public class OrderServiceImpl {
         Goods goodsTmp = null;
         OrderItems orderItemsTmp = null;
 
+        order.setOrderID(Id);
+        order.setOrderDate("2020.07");
+        order.setOrderDep("研发");
+        order.setOrderName("zouyou");
+        orderMapper.addOrder(order);
 
         while (mapIt.hasNext()) {
             goodsTmp = (Goods)mapIt.next();
@@ -46,7 +49,7 @@ public class OrderServiceImpl {
             orderItemsTmp.setGoodsNum(goodsTmp.getGoodsNum());
             orderItemsTmp.setGoodsTime(goodsTmp.getGoodsTime());
             orderItemsTmp.setGoodsType(goodsTmp.getGoodsType());
-            orderMapper.addInfo(orderItemsTmp);
+            orderMapper.addGoods(orderItemsTmp);
         }
     }
 }

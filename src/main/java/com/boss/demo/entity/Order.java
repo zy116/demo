@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * @author 12964
@@ -19,6 +20,6 @@ public class Order {
     private int orderID;
     private String orderDep;
     private String orderName;
-    private Date orderDate;
-    private Goods goods;
+    private String orderDate;
+    private HashMap<Long,OrderItems> items;
 }

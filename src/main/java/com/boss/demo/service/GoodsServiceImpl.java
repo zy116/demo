@@ -14,6 +14,8 @@ import java.util.List;
  * @date 2020/7/12 11:38
  */
 public class GoodsServiceImpl{
+
+    private OrderServiceImpl orderService;
     @Autowired
     private HttpSession session;
 
@@ -40,6 +42,12 @@ public class GoodsServiceImpl{
         getGoodsMap();
         return goodsMap.entrySet().toArray().toString();
     }
+
+    public String addGoods() {
+        orderService.addGoods(122);
+        return "Cart Service Settled";
+    }
+
 
     public HashMap<Integer, Goods> getGoodsMap() {
         goodsMap= (HashMap) session.getAttribute("goodsMap");
