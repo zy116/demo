@@ -4,6 +4,7 @@ import com.boss.demo.entity.Order;
 import com.boss.demo.service.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,12 +32,7 @@ public class OrderController {
 //        return "order added " + (new Date()).toString();
 //    }
     @GetMapping("/add")
-    public void addItem() {
-        Order order = new Order();
-        order.setOrderID(1);
-        order.setOrderName("zyou");
-        order.setOrderDep("生产");
-        order.setOrderDate("2020.7");
+    public void addItem(@RequestBody Order order) {
         orderService.addInfo(order);
     }
 
@@ -47,4 +43,4 @@ public class OrderController {
 }
 
 
-//{"goodsName":"手机","goodsType":"小米","goodsNum":4,"goodsAddress":"福州","goodsTime":"3days""}
+

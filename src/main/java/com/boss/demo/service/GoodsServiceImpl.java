@@ -3,6 +3,8 @@ package com.boss.demo.service;
 import com.alibaba.fastjson.JSONObject;
 import com.boss.demo.dao.GoodsMapper;
 import com.boss.demo.entity.Goods;
+import com.boss.demo.entity.Order;
+import javafx.scene.layout.Border;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,8 +55,8 @@ public class GoodsServiceImpl implements GoodsService{
         return JSONObject.toJSONString(goodsMap.entrySet().toArray());
     }
 
-    public String addItems() {
-        orderService.addItems(3);
+    public String addItems(Order order) {
+        orderService.addItems(order);
         return "商品已加入订单";
     }
 

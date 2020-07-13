@@ -6,6 +6,7 @@ import com.boss.demo.dao.OrderMapper;
 import com.boss.demo.entity.Goods;
 import com.boss.demo.entity.Order;
 import com.boss.demo.entity.OrderItems;
+import javafx.scene.layout.Border;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,18 +49,12 @@ public class OrderServiceImpl implements OrderService{
         orderMapper.addOrder(order);
     }
 
-    public void addItems(int Id) {
-        Order order = new Order();
+    public void addItems(Order order) {
         HashMap<Integer, Goods> map = goodsService.getGoodsMap();
         //获得key的集合
         Iterator mapIt = map.keySet().iterator();
         Goods goodsTmp = null;
         OrderItems orderItemsTmp = null;
-
-        order.setOrderID(Id);
-        order.setOrderDate("2020.07");
-        order.setOrderDep("设计");
-        order.setOrderName("zouy");
         orderMapper.addOrder(order);
 
         while (mapIt.hasNext()) {
