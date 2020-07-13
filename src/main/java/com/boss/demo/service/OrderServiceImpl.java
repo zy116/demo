@@ -43,7 +43,6 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private GoodsService goodsService;
 
-
     public void addInfo(Order order){
         orderMapper.addOrder(order);
     }
