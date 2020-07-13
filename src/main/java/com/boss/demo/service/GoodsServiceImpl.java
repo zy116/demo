@@ -71,6 +71,7 @@ public class GoodsServiceImpl implements GoodsService{
         return goodsMap;
     }
 
+
     /*
      *不使用hashmap
      */
