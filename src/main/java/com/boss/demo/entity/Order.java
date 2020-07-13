@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author 12964
@@ -21,5 +22,5 @@ public class Order {
     private String orderDep;
     private String orderName;
     private String orderDate;
-    private HashMap<Long,OrderItems> items;
+    private List<Goods> itemGoods;
 }

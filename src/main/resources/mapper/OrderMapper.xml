@@ -2,9 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.boss.demo.dao.OrderMapper">
 
-    <insert id="addGoods" parameterType="Goods">
-      insert into mybatis.goods(goodsId,goodsName,goodsType,goodsNum,goodsAddress,goodsTime)
-      values (#{goodsId},#{goodsName}, #{goodsType}, #{goodsNum}, #{goodsAddress},#{goodsTime})
-   </insert>
+        <select id="selectOrder" resultMap="GoodsOrder">
+          select *
+          from goods g,orders o
+          where g.conId = o.orderId and o.orderId=#{oid}
+       </select>
 
+    <select id="selectAllOrder" resultMap="GoodsOrder">
+          select *
+          from goods g,orders o
+          where g.conId = o.orderId
+       </select>
+
+        <resultMap id="GoodsOrder" type="Order">
+            <result  property="orderName" column="orderName"/>
+            <result  property="orderDep" column="orderDep"/>
+            <result  property="orderDate" column="orderDate"/>
+            <result  property="orderID" column="orderId"/>
+            <collection property="itemGoods" ofType="Goods">
+                <result property="goodsId" column="goodsId" />
+                <result property="goodsName" column="goodsName" />
+                <result property="goodsType" column="goodsType" />
+                <result property="goodsNum" column="goodsNum" />
+                <result property="goodsAddress" column="goodsAddress" />
+                <result property="goodsTime" column="goodsTime" />
+            </collection>
+        </resultMap>
+
+
+<!--    <select id="getOrder" resultMap="OrderGoods">-->
+<!--select * from teacher where id = #{id}-->
+<!--</select>-->
+<!--    <resultMap id="OrderGoods" type="Order">-->
+<!--        &lt;!&ndash;column是一对多的外键 , 写的是主键的列名&ndash;&gt;-->
+<!--        <collection property="students" javaType="ArrayList" ofType="Student" column="id"-->
+<!--                    select="getStudentByTeacherId"/>-->
+<!--    </resultMap>-->
+<!--    <select id="getStudentByTeacherId" resultType="Student">-->
+<!--  select * from student where tid = #{id}-->
+<!--</select>-->
 </mapper>

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * @author 12964
  * @version 1.0
@@ -21,4 +23,5 @@ public class OrderItems {
     private int goodsNum;
     private String goodsAddress;
     private String goodsTime;
+
 }
