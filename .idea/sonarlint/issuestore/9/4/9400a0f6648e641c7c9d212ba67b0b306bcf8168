@@ -1,0 +1,15 @@
+
+W	java:S125K"<This block of commented-out lines of code should be removed.(ê²‹%8½Æ’´´.
+G
+java:S21164"%Use "Arrays.toString(array)" instead.(á­‰Æøÿÿÿÿ8Õ„‚´´.
+]	java:S125S"<This block of commented-out lines of code should be removed.(šâ‹±øÿÿÿÿ8½Æ’´´.
+r
+java:S2441@"PMake "HashMap" and its parameters serializable or don't store it in the session.(ÅµÊ²ýÿÿÿÿ8Õ„‚´´.
+v
+java:S1450"TRemove the "goods" field and declare it as a local variable in the relevant methods.(±«úÿÿÿÿ8ÕøŠ´´.
+X	java:S125X"<This block of commented-out lines of code should be removed.(¯ôˆ“8½Æ’´´.
+K
+java:S1068")Remove this unused "goods" private field.(±«úÿÿÿÿ8ÕøŠ´´.
+{
+java:S2293?"YReplace the type specification in this constructor call with the diamond operator ("<>").(‡¨†”ûÿÿÿÿ8Õ„‚´´.
+]	java:S125N"<This block of commented-out lines of code should be removed.(Û×ßÜøÿÿÿÿ8½Æ’´´.
