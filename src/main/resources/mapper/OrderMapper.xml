@@ -2,16 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.boss.demo.dao.OrderMapper">
 
-        <select id="selectOrder" resultMap="GoodsOrder">
+<!--        <select id="selectOrder" resultMap="GoodsOrder">-->
+<!--          select *-->
+<!--          from goods g,orders o-->
+<!--          where g.conId = o.orderId and o.orderId=#{oid}-->
+<!--       </select>-->
+
+    <insert id="addOrder" parameterType="order">
+      insert into mybatis.orders(orderDep,orderName,orderDate)
+      values (#{orderDep},#{orderName}, #{orderDate})
+   </insert>
+
+    <select id="selectOrder" resultMap="GoodsOrder">
           select *
-          from goods g,orders o
-          where g.conId = o.orderId and o.orderId=#{oid}
+          from goods,orders
+          where goods.conId = orders.orderId and orders.orderId=#{oid}
        </select>
 
     <select id="selectAllOrder" resultMap="GoodsOrder">
           select *
-          from goods g,orders o
-          where g.conId = o.orderId
+          from goods,orders
+          where goods.conId = orders.orderId
        </select>
 
         <resultMap id="GoodsOrder" type="Order">

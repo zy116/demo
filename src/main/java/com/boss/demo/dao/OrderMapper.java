@@ -14,9 +14,6 @@ import java.util.List;
 @Mapper
 @Repository
 public interface OrderMapper {
-    //添加订单信息
-    String addGoods(Order order);
-
     int addOrder(Order order);
 
     List<Order> selectOrder(@Param("oid") int id);

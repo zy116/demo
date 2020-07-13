@@ -20,4 +20,12 @@ public class Goods {
     private int goodsNum;
     private String goodsAddress;
     private String goodsTime;
+
+    public Goods(String goodsName, String goodsType, int goodsNum, String goodsAddress, String goodsTime) {
+        this.goodsName = goodsName;
+        this.goodsType = goodsType;
+        this.goodsNum = goodsNum;
+        this.goodsAddress = goodsAddress;
+        this.goodsTime = goodsTime;
+    }
 }

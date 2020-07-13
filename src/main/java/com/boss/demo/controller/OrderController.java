@@ -1,16 +1,13 @@
 package com.boss.demo.controller;
 
 import com.boss.demo.entity.Order;
-import com.boss.demo.entity.OrderItems;
 import com.boss.demo.service.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.util.List;
 
 /**
  * @author 12964
@@ -22,6 +19,7 @@ import java.util.Date;
 @RequestMapping("/order")
 public class OrderController {
 
+    @Autowired
     private OrderServiceImpl orderService;
 
     //    @PostMapping("/add")
@@ -34,7 +32,19 @@ public class OrderController {
 //    }
     @GetMapping("/add")
     public void addItem() {
-        OrderItems orderItems = new OrderItems();
-        orderService.addItems(11);
+        Order order = new Order();
+        order.setOrderID(1);
+        order.setOrderName("zyou");
+        order.setOrderDep("生产");
+        order.setOrderDate("2020.7");
+        orderService.addInfo(order);
+    }
+
+    @RequestMapping("/queryAllOrder")
+    public List<Order> selectAllOrder(){
+        return orderService.selectAllOrder();
     }
 }
+
+
+//{"goodsName":"手机","goodsType":"小米","goodsNum":4,"goodsAddress":"福州","goodsTime":"3days""}

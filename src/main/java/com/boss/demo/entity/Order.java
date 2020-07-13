@@ -22,5 +22,7 @@ public class Order {
     private String orderDep;
     private String orderName;
     private String orderDate;
+
+    //商品集合
     private List<Goods> itemGoods;
 }

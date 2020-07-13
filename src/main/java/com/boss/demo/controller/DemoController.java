@@ -4,8 +4,8 @@ import com.boss.demo.dao.GoodsMapper;
 import com.boss.demo.dao.OrderMapper;
 import com.boss.demo.entity.Goods;
 import com.boss.demo.entity.Order;
-import com.boss.demo.service.ServiceDemo;
-import com.boss.demo.service.ServiceDemoImpl;
+import com.boss.demo.service.GoodsService;
+import com.boss.demo.service.OrderService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,29 +25,42 @@ import java.util.Map;
  */
 
 @RestController
+@RequestMapping("/demo")
 public class DemoController {
 
     @Autowired
-    ServiceDemo serviceDemo;
+    GoodsService goodsService;
 
     @Autowired
-    OrderMapper orderMapper;
+    OrderService orderService;
 
-    //查询全部的商品，用map返回
+
+    /*
+    * 不使用hashmap
+    * */
+
+
+//    //查询全部的商品，用map返回
+//    @RequestMapping("/queryAllGoods")
+//    public Map<Integer,Goods> map(){
+//        List<Goods> goods = serviceDemo.queryAllGoods();
+//        Map<Integer,Goods> map = new HashMap<>();
+//        for (Goods good : goods) {
+//            map.put(good.getGoodsId(),good);
+//        }
+//        return map;
+//    }
+
+    //查询全部商品
     @RequestMapping("/queryAllGoods")
-    public Map<Integer,Goods> map(){
-        List<Goods> goods = serviceDemo.queryAllGoods();
-        Map<Integer,Goods> map = new HashMap<>();
-        for (Goods good : goods) {
-            map.put(good.getGoodsId(),good);
-        }
-        return map;
+    public List<Goods> selectAllGoods(){
+        return goodsService.queryAllGoods();
     }
 
     //根据id删除商品
     @RequestMapping("/deleteGoods/{id}")
     public Boolean delete(@PathVariable("id") int goodsId){
-        serviceDemo.deleteGoodsByID(goodsId);
+        goodsService.deleteGoodsByID(goodsId);
         return true;
     }
 
@@ -60,14 +73,16 @@ public class DemoController {
 //        }
 //        return map;
 //    }
+//
+    //根据订单的id查询订单
+//    @RequestMapping("/queryOrder/{id}")
+//    public List<Order> orderList(@PathVariable("id") int id){
+//        return orderService.selectOrder(id);
+//    }
 
-    @RequestMapping("/queryOrder/{id}")
-    public List<Order> orderList(@PathVariable("id") int id){
-        return orderMapper.selectOrder(id);
-    }
-
+    //查询全部订单
     @RequestMapping("/queryAllOrder")
     public List<Order> selectAllOrder(){
-        return orderMapper.selectAllOrder();
+        return orderService.selectAllOrder();
     }
 }

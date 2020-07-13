@@ -18,10 +18,10 @@ import java.util.List;
 public class OrderItems {
     private int OrderItemsId;
     private int goodsId;
+    private int conId;
     private String goodsName;
     private String goodsType;
     private int goodsNum;
     private String goodsAddress;
     private String goodsTime;
-
 }
