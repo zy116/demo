@@ -15,16 +15,12 @@ import java.util.List;
  */
 public class GoodsServiceImpl{
 
+    @Autowired
     private OrderServiceImpl orderService;
     @Autowired
     private HttpSession session;
 
     private HashMap<Integer, Goods> goodsMap;
-//    private GoodsMapper goodsMapper;
-//
-//    public void setGoodsMapper(GoodsMapper goodsMapper) {
-//        this.goodsMapper = goodsMapper;
-//    }
 
     public Boolean addGoods(Goods goods) {
         getGoodsMap();
@@ -43,11 +39,10 @@ public class GoodsServiceImpl{
         return goodsMap.entrySet().toArray().toString();
     }
 
-    public String addGoods() {
-        orderService.addGoods(122);
+    public String addItems() {
+        orderService.addItems(122);
         return "Cart Service Settled";
     }
-
 
     public HashMap<Integer, Goods> getGoodsMap() {
         goodsMap= (HashMap) session.getAttribute("goodsMap");

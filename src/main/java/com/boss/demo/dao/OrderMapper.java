@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface OrderMapper {
     //添加订单信息
-    String addGoods(OrderItems orderItems);
+    String addGoods(Order order);
 
     int addOrder(Order order);
 

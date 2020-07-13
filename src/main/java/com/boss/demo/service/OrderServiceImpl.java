@@ -6,6 +6,7 @@ import com.boss.demo.entity.Goods;
 import com.boss.demo.entity.Order;
 import com.boss.demo.entity.OrderItems;
 import com.sun.org.apache.xpath.internal.operations.Or;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -16,17 +17,18 @@ import java.util.*;
  * @date 2020/7/12 11:38
  */
 public class OrderServiceImpl {
+    @Autowired
     private GoodsMapper goodsMapper;
-
+    @Autowired
     private OrderMapper orderMapper;
-
+    @Autowired
     private GoodsServiceImpl goodsService;
 
-    public void addInfo(OrderItems orderItems){
-        orderMapper.addGoods(orderItems);
+    public void addInfo(Order order){
+        orderMapper.addGoods(order);
     }
 
-    public void addGoods(int Id) {
+    public void addItems(int Id) {
         Order order = new Order();
         HashMap<Integer, Goods> map = goodsService.getGoodsMap();
         Iterator mapIt = map.keySet().iterator();
@@ -45,11 +47,11 @@ public class OrderServiceImpl {
             orderItemsTmp.setOrderItemsId(order.getOrderID());
             orderItemsTmp.setGoodsId(goodsTmp.getGoodsId());
             orderItemsTmp.setGoodsName(goodsTmp.getGoodsName());
-            orderItemsTmp.setGoodsAddress(goodsTmp.getGoodsAddress());
-            orderItemsTmp.setGoodsNum(goodsTmp.getGoodsNum());
-            orderItemsTmp.setGoodsTime(goodsTmp.getGoodsTime());
-            orderItemsTmp.setGoodsType(goodsTmp.getGoodsType());
-            orderMapper.addGoods(orderItemsTmp);
+//            orderItemsTmp.setGoodsAddress(goodsTmp.getGoodsAddress());
+//            orderItemsTmp.setGoodsNum(goodsTmp.getGoodsNum());
+//            orderItemsTmp.setGoodsTime(goodsTmp.getGoodsTime());
+//            orderItemsTmp.setGoodsType(goodsTmp.getGoodsType());
+//            orderMapper.addGoods(orderItemsTmp);
         }
     }
 }

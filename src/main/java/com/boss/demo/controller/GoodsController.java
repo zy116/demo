@@ -1,12 +1,13 @@
 package com.boss.demo.controller;
 
 
+import com.boss.demo.dao.GoodsMapper;
 import com.boss.demo.entity.Goods;
 import com.boss.demo.service.GoodsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author 12964
@@ -14,13 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020/7/10 10:42
  */
 @RestController
+@RequestMapping("/goods")
 public class GoodsController {
 
+//    @Autowired
+//    GoodsMapper goodsMapper;
 
-    private GoodsServiceImpl goodsService;
+    GoodsServiceImpl goodsService;
 
-    @PostMapping("/add")
-    public String add(@RequestBody Goods goods) {
+    @GetMapping("/add")
+    public String add(@PathVariable Goods goods) {
         goodsService.addGoods(goods);
         return "add goods info:" + goods.getGoodsName();
     }
@@ -28,7 +32,7 @@ public class GoodsController {
     @PostMapping("/remove")
     public String remove(@RequestBody Goods goods) {
         goodsService.deleteGoodsByID(goods.getGoodsId());
-        return null;
+        return "delete goods info:" + goods.getGoodsName();
     }
 
     @PostMapping("/list")
@@ -36,8 +40,8 @@ public class GoodsController {
         return goodsService.queryAllGoods();
     }
 
-    @PostMapping("/settle")
-    public String settle() {
-        return goodsService.settle();
+    @PostMapping("/addItems")
+    public String addItems() {
+        return goodsService.addItems();
     }
 }
