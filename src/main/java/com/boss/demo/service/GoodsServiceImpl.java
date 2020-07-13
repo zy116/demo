@@ -1,10 +1,8 @@
 package com.boss.demo.service;
 
-import com.alibaba.fastjson.JSONObject;
 import com.boss.demo.dao.GoodsMapper;
 import com.boss.demo.entity.Goods;
 import com.boss.demo.entity.Order;
-import javafx.scene.layout.Border;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,20 +27,18 @@ public class GoodsServiceImpl implements GoodsService{
     private HttpSession session;
 
     private HashMap<Integer, Goods> goodsMap;
-    private Goods goods;
 
     @Override
-    public int addGoods(Goods goods) {
-        this.goods = goods;
+    public void addGoods(Goods goods) {
         getGoodsMap();
         goodsMap.put(goods.getGoodsId(),goods);
-        return 1;
     }
 
-    public int deleteGoodsByID(int id) {
+    public void deleteGoodsByID(int id) {
         getGoodsMap();
-        goodsMap.remove(id);
-        return 1;
+        if (goodsMap.containsKey(id)){
+            goodsMap.remove(id);
+        }
     }
 
     @Override
@@ -50,9 +46,15 @@ public class GoodsServiceImpl implements GoodsService{
         return goodsMapper.queryAllGoods();
     }
 
-    public String queryAllGoods2() {
+    /*
+     * @author 12964
+     * @return java.util.HashMap<java.lang.Integer,com.boss.demo.entity.Goods>
+     * @date 2020/7/13 16:25
+     * 返回的是缓存中的物品
+     */
+    public HashMap<Integer, Goods> queryAllGoods2() {
         getGoodsMap();
-        return JSONObject.toJSONString(goodsMap.entrySet().toArray());
+        return goodsMap;
     }
 
     public String addItems(Order order) {
@@ -68,7 +70,6 @@ public class GoodsServiceImpl implements GoodsService{
         }
         return goodsMap;
     }
-
 
     /*
      *不使用hashmap
@@ -91,5 +92,4 @@ public class GoodsServiceImpl implements GoodsService{
 //    public List<Goods> queryAllGoods() {
 //        return goodsMapper.queryAllGoods();
 //    }
-
 }

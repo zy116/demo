@@ -37,8 +37,6 @@ public class OrderServiceImpl implements OrderService{
         return orderMapper.selectAllOrder();
     }
     @Autowired
-    private GoodsMapper goodsMapper;
-    @Autowired
     private OrderMapper orderMapper;
     @Autowired
     private OrderItem orderItem;

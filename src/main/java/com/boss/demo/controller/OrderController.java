@@ -31,9 +31,19 @@ public class OrderController {
 //        orderService.addInfo(order);
 //        return "order added " + (new Date()).toString();
 //    }
+
+
+//    {"orderId":"1","orderDep":"设计","orderName":"zouy","orderDate":"2020.8"}
     @GetMapping("/add")
-    public void addItem(@RequestBody Order order) {
-        orderService.addInfo(order);
+    public String addItem(@RequestBody Order order) {
+        if(order==null){
+            return "请重新传参";
+        }
+        else {
+            orderService.addInfo(order);
+            return "添加进入数据库";
+        }
+
     }
 
     @RequestMapping("/queryAllOrder")
