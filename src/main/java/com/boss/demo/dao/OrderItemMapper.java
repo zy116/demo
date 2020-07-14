@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
-public interface OrderItem {
+public interface OrderItemMapper {
     /*
      * 用于提交订单
      * @param orderItems

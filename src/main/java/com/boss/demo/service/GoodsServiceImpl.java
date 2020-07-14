@@ -27,21 +27,10 @@ public class GoodsServiceImpl implements GoodsService{
 
     private HashMap<Integer, Goods> goodsMap;
 
-    public Map<Integer,Goods> getMap(){
-        return this.goodsMap;
-    }
-
     @Override
     public void addGoods(Goods goods) {
         getGoodsMap();
         goodsMap.put(goods.getGoodsId(),goods);
-    }
-
-    public void deleteGoodsByID(int id) {
-        getGoodsMap();
-        if (goodsMap.containsKey(id)){
-            goodsMap.remove(id);
-        }
     }
 
     @Override
@@ -55,6 +44,15 @@ public class GoodsServiceImpl implements GoodsService{
      * @date 2020/7/13 16:25
      * 返回的是缓存中的物品
      */
+
+    @Override
+    public void deleteGoodsByID(int id) {
+        getGoodsMap();
+        if (goodsMap.containsKey(id)){
+            goodsMap.remove(id);
+        }
+    }
+
     public HashMap<Integer, Goods> queryAllGoods2() {
         getGoodsMap();
         return goodsMap;

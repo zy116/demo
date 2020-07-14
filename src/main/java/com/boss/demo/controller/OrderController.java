@@ -28,7 +28,7 @@ public class OrderController {
      * @return java.lang.String
      * @date 2020/7/14 11:04
      */
-    @GetMapping("/add")
+    @RequestMapping("/add")
     public String addItem(@RequestBody Order order) {
         orderService.addItems(order);
         return "订单提交";

@@ -5,6 +5,7 @@ import com.boss.demo.entity.Goods;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Mapper
@@ -16,6 +17,7 @@ public interface GoodsMapper {
     //根据id删除一个商品
     int deleteGoodsByID(int id);
 
-    //查询所有的商品
+    //查询数据库的所有商品
     List<Goods> queryAllGoods();
+
 }

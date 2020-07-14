@@ -24,4 +24,5 @@ public class Order {
 
     private String orderDate;
 
+    private List<Goods> itemGoods;
 }

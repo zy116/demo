@@ -1,6 +1,6 @@
 package com.boss.demo.service;
 
-import com.boss.demo.dao.OrderItem;
+import com.boss.demo.dao.OrderItemMapper;
 import com.boss.demo.dao.OrderMapper;
 import com.boss.demo.entity.Goods;
 import com.boss.demo.entity.Order;
@@ -18,6 +18,13 @@ import java.util.*;
 @Service
 public class OrderServiceImpl implements OrderService{
 
+    @Autowired
+    private OrderMapper orderMapper;
+    @Autowired
+    private OrderItemMapper orderItemMapper;
+    @Autowired
+    private GoodsServiceImpl goodsService;
+
     @Override
     public List<Order> selectOrderById(int id) {
         return orderMapper.selectOrder(id);
@@ -27,13 +34,8 @@ public class OrderServiceImpl implements OrderService{
     public List<Order> selectAllOrder() {
         return orderMapper.selectAllOrder();
     }
-    @Autowired
-    private OrderMapper orderMapper;
-    @Autowired
-    private OrderItem orderItem;
-    @Autowired
-    private GoodsService goodsService;
 
+    @Override
     public void addItems(Order order) {
         HashMap<Integer, Goods> map = goodsService.getGoodsMap();
         //获得key的集合
@@ -53,7 +55,7 @@ public class OrderServiceImpl implements OrderService{
             orderItemsTmp.setGoodsTime(goodsTmp.getGoodsTime());
             orderItemsTmp.setGoodsType(goodsTmp.getGoodsType());
             orderItemsTmp.setConId(goodsTmp.getConId());
-            orderItem.insertItem(orderItemsTmp);
+            orderItemMapper.insertItem(orderItemsTmp);
         }
 
         map.clear();

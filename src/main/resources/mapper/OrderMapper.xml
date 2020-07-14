@@ -13,7 +13,7 @@
       values (#{orderId},#{orderDep},#{orderName}, #{orderDate})
    </insert>
 
-    <select id="selectOrder" resultMap="GoodsOrder">
+    <select id="selectOrderById" resultMap="GoodsOrder">
           select *
           from goods,orders
           where goods.conId = orders.orderId and orders.orderId=#{oid}
@@ -37,6 +37,7 @@
                 <result property="goodsNum" column="goodsNum" />
                 <result property="goodsAddress" column="goodsAddress" />
                 <result property="goodsTime" column="goodsTime" />
+                <result property="conId" column="conId" />
             </collection>
         </resultMap>
 </mapper>
