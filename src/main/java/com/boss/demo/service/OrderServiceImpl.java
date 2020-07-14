@@ -25,25 +25,52 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private GoodsServiceImpl goodsService;
 
+
+    /*
+     * 根据id查询数据库中的所有订单
+     * @param id
+     * @author 12964
+     * @return java.util.List<com.boss.demo.entity.Order>
+     * @date 2020/7/14 15:42
+     */
     @Override
     public List<Order> selectOrderById(int id) {
         return orderMapper.selectOrder(id);
     }
 
+
+    /*
+     * 查询数据库中所有订单
+     * @author 12964
+     * @return java.util.List<com.boss.demo.entity.Order>
+     * @date 2020/7/14 15:42
+     */
     @Override
     public List<Order> selectAllOrder() {
         return orderMapper.selectAllOrder();
     }
 
+
+    /*
+     * 将缓存中的物品加入订单并进入数据库
+     * @param order
+     * @author 12964
+     * @return void
+     * @date 2020/7/14 15:41
+     */
     @Override
     public void addItems(Order order) {
         HashMap<Integer, Goods> map = goodsService.getGoodsMap();
-        //获得key的集合
+        //获得map的所有key
         Iterator<Integer> mapIt = map.keySet().iterator();
         Goods goodsTmp = null;
         OrderItems orderItemsTmp = null;
+
+        //将订单信息添加进数据库
         orderMapper.addOrder(order);
 
+
+        //遍历map，将物品全部加入数据库
         while (mapIt.hasNext()) {
             goodsTmp = map.get(mapIt.next());
             orderItemsTmp = new OrderItems();
