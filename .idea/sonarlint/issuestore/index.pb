@@ -25,7 +25,9 @@ k
 ;src/main/java/com/boss/demo/controller/GoodsController.java,2\0\20783f6a07a2cafa24ef681a8062f3d00324efeb
 i
 9src/main/java/com/boss/demo/service/GoodsServiceImpl.java,9\4\9400a0f6648e641c7c9d212ba67b0b306bcf8168
-j
-:src/main/java/com/boss/demo/controller/DemoController.java,5\4\5409f36f43b4f53e5b7f86865e7cb7a0d72cb11f
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+8
+demo.iml,3\a\3a1f3b8d79f7f74ae8ee86cf15078bf944eb62c9
+f
+6.idea/libraries/Maven__com_alibaba_fastjson_1_2_72.xml,2\5\259add33031ce3e96bb9cffb75ebc15a4453457d

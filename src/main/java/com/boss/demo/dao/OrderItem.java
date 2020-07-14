@@ -12,5 +12,12 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface OrderItem {
+    /*
+     * 用于提交订单
+     * @param orderItems
+     * @author 12964
+     * @return int
+     * @date 2020/7/14 11:10
+     */
     int insertItem(OrderItems orderItems);
 }

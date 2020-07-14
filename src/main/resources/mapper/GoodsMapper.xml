@@ -18,9 +18,9 @@
       SELECT * from mybatis.goods
    </select>
 
-    <!--查询所有的商品-->
-    <select id="queryAllGoods2" resultType="Goods">
-      SELECT * from mybatis.goods
-   </select>
+<!--    &lt;!&ndash;查询所有的商品&ndash;&gt;-->
+<!--    <select id="queryAllGoods2" resultType="Goods">-->
+<!--      SELECT * from mybatis.goods-->
+<!--   </select>-->
 
 </mapper>

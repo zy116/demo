@@ -1,12 +1,10 @@
 package com.boss.demo.service;
 
-import com.boss.demo.dao.GoodsMapper;
 import com.boss.demo.dao.OrderItem;
 import com.boss.demo.dao.OrderMapper;
 import com.boss.demo.entity.Goods;
 import com.boss.demo.entity.Order;
 import com.boss.demo.entity.OrderItems;
-import javafx.scene.layout.Border;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +18,8 @@ import java.util.*;
 @Service
 public class OrderServiceImpl implements OrderService{
 
-    /*
-    * 不使用hashmap的情况
-    * */
-//
-//    @Autowired
-//    private OrderMapper orderMapper;
-
     @Override
-    public List<Order> selectOrder(int id) {
+    public List<Order> selectOrderById(int id) {
         return orderMapper.selectOrder(id);
     }
 
@@ -43,14 +34,10 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private GoodsService goodsService;
 
-    public void addInfo(Order order){
-        orderMapper.addOrder(order);
-    }
-
     public void addItems(Order order) {
         HashMap<Integer, Goods> map = goodsService.getGoodsMap();
         //获得key的集合
-        Iterator mapIt = map.keySet().iterator();
+        Iterator<Integer> mapIt = map.keySet().iterator();
         Goods goodsTmp = null;
         OrderItems orderItemsTmp = null;
         orderMapper.addOrder(order);
@@ -58,15 +45,18 @@ public class OrderServiceImpl implements OrderService{
         while (mapIt.hasNext()) {
             goodsTmp = map.get(mapIt.next());
             orderItemsTmp = new OrderItems();
-            orderItemsTmp.setOrderItemsId(order.getOrderID());
+            orderItemsTmp.setOrderItemsId(order.getOrderId());
             orderItemsTmp.setGoodsId(goodsTmp.getGoodsId());
             orderItemsTmp.setGoodsName(goodsTmp.getGoodsName());
             orderItemsTmp.setGoodsAddress(goodsTmp.getGoodsAddress());
             orderItemsTmp.setGoodsNum(goodsTmp.getGoodsNum());
             orderItemsTmp.setGoodsTime(goodsTmp.getGoodsTime());
             orderItemsTmp.setGoodsType(goodsTmp.getGoodsType());
+            orderItemsTmp.setConId(goodsTmp.getConId());
             orderItem.insertItem(orderItemsTmp);
         }
+
+        map.clear();
     }
 
 }

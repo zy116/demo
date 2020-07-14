@@ -2,13 +2,12 @@ package com.boss.demo.controller;
 
 
 import com.boss.demo.entity.Goods;
-import com.boss.demo.entity.Order;
 import com.boss.demo.service.GoodsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 12964
@@ -19,14 +18,8 @@ import java.util.List;
 @RequestMapping("/goods")
 public class GoodsController {
 
-//    @Autowired
-//    GoodsMapper goodsMapper;
-
-
     @Autowired
     GoodsServiceImpl goodsService;
-
- 
     /*
      *添加物品进入缓存，传入参数格式为 
      * {"goodsId":4,"goodsName":"手机","goodsType":"苹果",
@@ -62,24 +55,16 @@ public class GoodsController {
      * @date 2020/7/13 16:40
      */
     @RequestMapping("/list")
-    public HashMap<Integer, Goods> list() {
+    public Map<Integer, Goods> list() {
         return goodsService.queryAllGoods2();
     }
 
     /*
-     * @param order
+     * 查询数据库中的所有物品
      * @author 12964
-     * @return java.lang.String
-     * @date 2020/7/13 16:40
+     * @return java.util.List<com.boss.demo.entity.Goods>
+     * @date 2020/7/14 14:47
      */
-//    {"orderId":"1","orderDep":"设计","orderName":"zouy","orderDate":"2020.8"}
-    @RequestMapping("/addItems")
-    public String addItems(@RequestBody Order order) {
-        goodsService.addItems(order);
-        return "加入完毕";
-    }
-
-    //查询数据库中全部商品
     @RequestMapping("/queryAllGoods")
     public List<Goods> selectAllGoods(){
         return goodsService.queryAllGoods();

@@ -26,4 +26,5 @@ public class Goods {
 
     private String goodsTime;
 
+    private int conId;
 }

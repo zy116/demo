@@ -9,8 +9,8 @@
 <!--       </select>-->
 
     <insert id="addOrder" parameterType="order">
-      insert into mybatis.orders(orderDep,orderName,orderDate)
-      values (#{orderDep},#{orderName}, #{orderDate})
+      insert into mybatis.orders(orderId,orderDep,orderName,orderDate)
+      values (#{orderId},#{orderDep},#{orderName}, #{orderDate})
    </insert>
 
     <select id="selectOrder" resultMap="GoodsOrder">
@@ -29,7 +29,7 @@
             <result  property="orderName" column="orderName"/>
             <result  property="orderDep" column="orderDep"/>
             <result  property="orderDate" column="orderDate"/>
-            <result  property="orderID" column="orderId"/>
+            <result  property="orderId" column="orderId"/>
             <collection property="itemGoods" ofType="Goods">
                 <result property="goodsId" column="goodsId" />
                 <result property="goodsName" column="goodsName" />
@@ -39,17 +39,4 @@
                 <result property="goodsTime" column="goodsTime" />
             </collection>
         </resultMap>
-
-
-<!--    <select id="getOrder" resultMap="OrderGoods">-->
-<!--select * from teacher where id = #{id}-->
-<!--</select>-->
-<!--    <resultMap id="OrderGoods" type="Order">-->
-<!--        &lt;!&ndash;column是一对多的外键 , 写的是主键的列名&ndash;&gt;-->
-<!--        <collection property="students" javaType="ArrayList" ofType="Student" column="id"-->
-<!--                    select="getStudentByTeacherId"/>-->
-<!--    </resultMap>-->
-<!--    <select id="getStudentByTeacherId" resultType="Student">-->
-<!--  select * from student where tid = #{id}-->
-<!--</select>-->
 </mapper>

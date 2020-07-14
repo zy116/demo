@@ -3,10 +3,7 @@ package com.boss.demo.controller;
 import com.boss.demo.entity.Order;
 import com.boss.demo.service.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,32 +20,42 @@ public class OrderController {
     @Autowired
     private OrderServiceImpl orderService;
 
-    //    @PostMapping("/add")
-//    public String add() {
-//        Order order = new Order();
-//        order.setUid(3003);
-//        order.setSn("2020052800002");
-//        orderService.addInfo(order);
-//        return "order added " + (new Date()).toString();
-//    }
-
-
-//    {"orderId":"1","orderDep":"设计","orderName":"zouy","orderDate":"2020.8"}
+    /*
+     *将订单加入数据库操作
+     * 格式：{"orderId":"1","orderDep":"设计","orderName":"zouy","orderDate":"2020.8"}
+     * @param order
+     * @author 12964
+     * @return java.lang.String
+     * @date 2020/7/14 11:04
+     */
     @GetMapping("/add")
     public String addItem(@RequestBody Order order) {
-        if(order==null){
-            return "请重新传参";
-        }
-        else {
-            orderService.addInfo(order);
-            return "添加进入数据库";
-        }
+        orderService.addItems(order);
+        return "订单提交";
 
     }
 
+    /*
+     * 查询数据库中的所有订单
+     * @author 12964
+     * @return java.util.List<com.boss.demo.entity.Order>
+     * @date 2020/7/14 11:04
+     */
     @RequestMapping("/queryAllOrder")
-    public List<Order> selectAllOrder(){
+    public List<Order> selectAllOrder() {
         return orderService.selectAllOrder();
+    }
+
+    /*
+     * 根据id查询数据库中的所有订单
+     * @param id
+     * @author 12964
+     * @return java.util.List<com.boss.demo.entity.Order>
+     * @date 2020/7/14 14:50
+     */
+    @RequestMapping("/queryAllOrder/{id}")
+    public List<Order> selectOrderById(@PathVariable("id") int id) {
+        return orderService.selectOrderById(id);
     }
 }
 
