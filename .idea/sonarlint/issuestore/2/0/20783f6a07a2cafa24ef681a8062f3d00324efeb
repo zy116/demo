@@ -1,6 +1,2 @@
 
-W	java:S125"<This block of commented-out lines of code should be removed.(ê²‹%8¡õ†·´.
-
-java:S1319A"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(©Ó‚†ıÿÿÿÿ8™¥‰»´.
-]	java:S125!"<This block of commented-out lines of code should be removed.(âÚâüÿÿÿÿ8©¥Ïº´.
-]	java:S125K"<This block of commented-out lines of code should be removed.(ë¥Å·şÿÿÿÿ8©äìÁ´.
+]	java:S125"<This block of commented-out lines of code should be removed.(âÚâüÿÿÿÿ8©¥Ïº´.

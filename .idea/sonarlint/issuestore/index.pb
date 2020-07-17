@@ -3,8 +3,6 @@
 -src/main/java/com/boss/demo/entity/Goods.java,d\9\d9a62011311731ba71f3b157a2eba635193d7593
 b
 2src/main/java/com/boss/demo/entity/OrderItems.java,1\e\1e36322bf8862c93bb0f8c6764b0f3c3ed1f2123
-^
-.src/main/java/com/boss/demo/dao/OrderItem.java,8\f\8f1a38c71914e5d6dab7e9600025997e03d13b91
 `
 0src/main/java/com/boss/demo/dao/GoodsMapper.java,3\2\32a001382f06215ee3d1b16cd9c19c137eb11343
 `
@@ -31,3 +29,7 @@ i
 demo.iml,3\a\3a1f3b8d79f7f74ae8ee86cf15078bf944eb62c9
 f
 6.idea/libraries/Maven__com_alibaba_fastjson_1_2_72.xml,2\5\259add33031ce3e96bb9cffb75ebc15a4453457d
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+e
+5src/main/java/com/boss/demo/config/SwaggerConfig.java,8\f\8f331169780e2b309f4bbc01d8ead3578ee2901c
